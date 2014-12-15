@@ -25,6 +25,8 @@ module.exports = function (grunt)
 			}
 		},
 
+		clean: ['dist/'],
+
 		watch:
 		{
 			source:
@@ -47,11 +49,17 @@ module.exports = function (grunt)
 		var formatJson = grunt.file.readJSON('format.json');
 		formatJson.source = grunt.file.read('format.html');
 
-		grunt.file.write('dist/format.js', 'window.storyFormat(' + JSON.stringify(formatJson) + ');');
+		grunt.file.write('dist/' + formatJson.name + '/format.js', 'window.storyFormat(' + JSON.stringify(formatJson) + ');');
+
+		// if an image is set, copy that too
+
+		if (formatJson.image)
+			grunt.file.copy(formatJson.image, 'dist/' + formatJson.name + '/' + formatJson.image);
 	});
 
 	grunt.loadNpmTasks('grunt-bake');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.registerTask('default', ['bake:test']);
-	grunt.registerTask('release', ['bake:release', 'compileformat']);
+	grunt.registerTask('release', ['clean', 'bake:release', 'compileformat']);
 };

@@ -1,12 +1,50 @@
-whut<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>{{STORY_NAME}}
 </title>
 <meta charset="utf-8">
+<style>
+body
+{
+	font: 10pt Cousine, monospace;
+	margin: 2em;
+}
+
+h1
+{
+	font-size: 14pt;
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+tw-passagedata
+{
+	display: block !important;
+	line-height: 200%;
+	margin-bottom: 2em;
+	white-space: pre-wrap;
+}
+
+tw-passagedata + tw-passagedata
+{
+	border-top: 1pt dashed black;
+	padding-top: 2em;
+}
+
+tw-passagedata:before
+{
+	content: attr(name);
+	display: block;
+	font-weight: bold;
+}
+</style>
 </head>
 
 <body>
+
+<h1>{{STORY_NAME}}
+</h1>
 {{STORY_DATA}}
 
 
