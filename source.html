@@ -25,17 +25,16 @@ tw-passagedata
 	white-space: pre-wrap;
 }
 
-tw-passagedata + tw-passagedata
+tw-passagedata + div
 {
 	border-top: 1pt dashed black;
 	padding-top: 2em;
 }
 
-tw-passagedata:before
+div
 {
-	content: attr(name);
-	display: block;
 	font-weight: bold;
+    line-height: 1.5em;
 }
 </style>
 </head>
@@ -45,6 +44,6 @@ tw-passagedata:before
 <h1><!--(bake /data/name_test.txt _if="test")--><!--(bake /data/name_release.txt _if="!test")--></h1>
 
 <!--(bake /data/passages_test.html _if="test")--><!--(bake /data/passages_release.html _if="!test")-->
-
+<script>document.querySelectorAll("tw-passagedata").forEach(function(e){var t=document.createElement("div");t.innerHTML=e.getAttribute("name");var r=document.querySelector("tw-storydata");r.hidden=!1,r.insertBefore(t,e)});</script>
 </body>
 </html>

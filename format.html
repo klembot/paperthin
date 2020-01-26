@@ -18,11 +18,6 @@ h1
 	margin-bottom: 2em;
 }
 
-tw-storydata
-{
-	display: block !important;
-}
-
 tw-passagedata
 {
 	display: block !important;
@@ -31,17 +26,16 @@ tw-passagedata
 	white-space: pre-wrap;
 }
 
-tw-passagedata + tw-passagedata
+tw-passagedata + div
 {
 	border-top: 1pt dashed black;
 	padding-top: 2em;
 }
 
-tw-passagedata:before
+div
 {
-	content: attr(name);
-	display: block;
 	font-weight: bold;
+    line-height: 1.5em;
 }
 </style>
 </head>
@@ -50,8 +44,8 @@ tw-passagedata:before
 
 <h1>{{STORY_NAME}}
 </h1>
-{{STORY_DATA}}
+{{STORY_DATA}}
 
-
+<script>document.querySelectorAll("tw-passagedata").forEach(function(e){var t=document.createElement("div");t.innerHTML=e.getAttribute("name");var r=document.querySelector("tw-storydata");r.hidden=!1,r.insertBefore(t,e)});</script>
 </body>
 </html>
