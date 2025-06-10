@@ -1,10 +1,11 @@
 {
 	"name": "Paperthin",
-	"version": "1.0",
+	"version": "1.0.0",
 	"description": "The default proofing format for Twine 2. Icon designed by <a href=\"http://www.thenounproject.com/Simon Child\">Simon Child</a> from the <a href=\"http://www.thenounproject.com\">Noun Project</a>",
 	"author": "<a href=\"http://chrisklimas.com\">Chris Klimas</a>",
 	"image": "icon.svg",
 	"url": "http://twinery.org/",
 	"license": "ZLib/Libpng", 
-	"proofing": true
+	"proofing": true,
+	"source": ""
 }

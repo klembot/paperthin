@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><!--(bake /data/name_test.txt _if="test")--><!--(bake /data/name_release.txt _if="!test")--></title>
+<title>{{STORY_NAME}}</title>
 <meta charset="utf-8">
 <style>
 body
@@ -15,6 +15,11 @@ h1
 	font-size: 14pt;
 	text-align: center;
 	margin-bottom: 2em;
+}
+
+tw-storydata
+{
+	display: block !important;
 }
 
 tw-passagedata
@@ -39,12 +44,8 @@ tw-passagedata:before
 }
 </style>
 </head>
-
 <body>
-
-<h1><!--(bake /data/name_test.txt _if="test")--><!--(bake /data/name_release.txt _if="!test")--></h1>
-
-<!--(bake /data/passages_test.html _if="test")--><!--(bake /data/passages_release.html _if="!test")-->
-
+	<h1>{{STORY_NAME}}</h1>
+{{STORY_DATA}}
 </body>
 </html>
