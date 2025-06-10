@@ -36,16 +36,32 @@ tw-passagedata + tw-passagedata
 	padding-top: 2em;
 }
 
-tw-passagedata:before
+.passage-name
 {
-	content: attr(name);
 	display: block;
 	font-weight: bold;
+	margin-bottom: 0.5em;
 }
+
 </style>
 </head>
 <body>
 	<h1>{{STORY_NAME}}</h1>
 {{STORY_DATA}}
+<script>
+// Get all tw-passagedata elements.
+var elements = document.querySelectorAll('tw-passagedata');
+// Loop through each element.
+elements.forEach(function(element) {
+	// Create a new span element for the passage name.
+	var passageName = document.createElement('span');
+	// Set the class name for styling.
+	passageName.className = 'passage-name';
+	// Set the text content to the passage's name.
+	passageName.textContent = element.getAttribute('name');
+	// Insert the passage name before the passage content.
+	element.insertBefore(passageName, element.firstChild);
+});
+</script>
 </body>
 </html>
