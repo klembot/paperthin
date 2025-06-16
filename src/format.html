@@ -36,31 +36,18 @@ tw-passagedata + tw-passagedata
 	padding-top: 2em;
 }
 
-.passage-name
-{
-	display: block;
-	font-weight: bold;
-	margin-bottom: 0.5em;
-}
-
 </style>
 </head>
 <body>
 	<h1>{{STORY_NAME}}</h1>
 {{STORY_DATA}}
 <script>
-// Get all tw-passagedata elements.
-var elements = document.querySelectorAll('tw-passagedata');
-// Loop through each element.
-elements.forEach(function(element) {
-	// Create a new span element for the passage name.
-	var passageName = document.createElement('span');
-	// Set the class name for styling.
-	passageName.className = 'passage-name';
-	// Set the text content to the passage's name.
-	passageName.textContent = element.getAttribute('name');
-	// Insert the passage name before the passage content.
-	element.insertBefore(passageName, element.firstChild);
+document.addEventListener("DOMContentLoaded", function() {
+	for (const el of document.querySelectorAll('tw-passagedata')) {  
+		const passageName = document.createElement('h2');  
+		passageName.textContent = el.getAttribute('name') || '-';  
+		el.insertBefore(passageName, el.firstChild);
+	}
 });
 </script>
 </body>
