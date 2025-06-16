@@ -16,10 +16,9 @@
     "url": "git+https://github.com/klembot/paperthin"
   },
   "scripts": {
-    "clean": "rimraf dist",
     "build": "node utils/compile.js",
     "test": "node --test 'test/*.test.js'",
-    "all": "npm run clean && npm run test && npm run build"
+    "all": "npm run test && npm run build"
   },
   "type": "module",
   "dependencies": {
