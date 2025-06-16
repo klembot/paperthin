@@ -1,42 +1,46 @@
-const assert = require('assert');
-const { describe, it, before, after } = require('node:test');
-const fs = require('fs');
-const path = require('path');
+import assert from 'assert';
+import { describe, it, before, after } from 'node:test';
+import { existsSync, rmSync, mkdirSync, readdirSync, rmdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe('Compile Format', () => {
     // Clean up the dist directory before running tests
     before(() => {
-        const distDir = path.join(__dirname, '../dist', 'paperthin');
-        if (fs.existsSync(distDir)) {
-            fs.rmSync(distDir, { recursive: true, force: true });
+        const distDir = join(__dirname, '../dist', 'paperthin');
+        if (existsSync(distDir)) {
+            rmSync(distDir, { recursive: true, force: true });
         }
-        fs.mkdirSync(distDir, { recursive: true });
+        mkdirSync(distDir, { recursive: true });
         console.log('Cleaned up dist/format directory.');
     });
 
     // Clean up the dist directory after tests
     after(() => {
-        const distDir = path.join(__dirname, '../dist', 'paperthin');
+        const distDir = join(__dirname, '../dist', 'paperthin');
         
         // Remove the dist/paperthin directory if it exists
-        if (fs.existsSync(distDir)) {
-            fs.rmSync(distDir, { recursive: true, force: true });
+        if (existsSync(distDir)) {
+            rmSync(distDir, { recursive: true, force: true });
         }
         // Remove the dist directory if it is empty
-        const parentDir = path.dirname(distDir);
-        if (fs.readdirSync(parentDir).length === 0) {
-            fs.rmdirSync(parentDir);
+        const parentDir = dirname(distDir);
+        if (readdirSync(parentDir).length === 0) {
+            rmdirSync(parentDir);
         }
         console.log('Cleaned up dist/format directory after tests.');
 
     });
 
-    it('should compile format.json and format.html into dist/format.js', () => {
-       // Require the format compiler module.
-        const formatCompiler = require('../utils/compile.js');
+    it('should compile format.json and format.html into dist/format.js', async () => {
+        // Import the format compiler module using ES modules.
+        const { default: formatCompiler } = await import('../utils/compile.js');
 
         // Assert that the dist/paperthin/format.js file is created.
-        const formatJsPath = path.join(__dirname, '../dist', 'paperthin', 'format.js');
-        assert(fs.existsSync(formatJsPath), '../dist/paperthin/format.js should exist after compilation');
+        const formatJsPath = join(__dirname, '../dist', 'paperthin', 'format.js');
+        assert(existsSync(formatJsPath), '../dist/paperthin/format.js should exist after compilation');
     });
 });

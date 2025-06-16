@@ -16,10 +16,13 @@
     "url": "git+https://github.com/klembot/paperthin"
   },
   "scripts": {
-    "clean": "node utils/cleanup.js",
+    "clean": "rimraf dist",
     "build": "node utils/compile.js",
     "test": "node --test 'test/*.test.js'",
     "all": "npm run clean && npm run test && npm run build"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  }
 }
