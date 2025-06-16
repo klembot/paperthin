@@ -1,6 +1,6 @@
 {
   "name": "paperthin",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "The default proofing format for Twine 2. Icon designed by <a href=\"http://www.thenounproject.com/Simon Child\">Simon Child</a> from the <a href=\"http://www.thenounproject.com\">Noun Project</a>",
   "author": "Chris Klimas <chris@twinery.org>",
   "license": "ZLib/Libpng",
@@ -13,12 +13,13 @@
   "main": "utils/compile.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/videlais/paperthin"
+    "url": "git+https://github.com/klembot/paperthin"
   },
   "scripts": {
     "clean": "node utils/cleanup.js",
     "build": "node utils/compile.js",
     "test": "node --test 'test/*.test.js'",
     "all": "npm run clean && npm run test && npm run build"
-  }
+  },
+  "type": "module"
 }
