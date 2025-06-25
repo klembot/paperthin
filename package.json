@@ -24,7 +24,17 @@
   "dependencies": {
     "rimraf": "^6.0.1"
   },
-  "devEngines": {
+  "engines": {
     "node": ">=20.0.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "onFail": "error"
+    }
   }
 }
