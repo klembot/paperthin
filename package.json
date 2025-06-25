@@ -17,11 +17,14 @@
   },
   "scripts": {
     "build": "node utils/compile.js",
-    "test": "node --test 'test/*.test.js'",
+    "test": "node --test test/*.test.js",
     "all": "npm run test && npm run build"
   },
   "type": "module",
   "dependencies": {
     "rimraf": "^6.0.1"
+  },
+  "devEngines": {
+    "node": ">=20.0.0"
   }
 }
