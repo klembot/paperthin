@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{{STORY_NAME}}
-</title>
+<title>{{STORY_NAME}}</title>
 <meta charset="utf-8">
 <style>
 body
@@ -37,21 +36,19 @@ tw-passagedata + tw-passagedata
 	padding-top: 2em;
 }
 
-tw-passagedata:before
-{
-	content: attr(name);
-	display: block;
-	font-weight: bold;
-}
 </style>
 </head>
-
 <body>
-
-<h1>{{STORY_NAME}}
-</h1>
+	<h1>{{STORY_NAME}}</h1>
 {{STORY_DATA}}
-
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	for (const el of document.querySelectorAll('tw-passagedata')) {  
+		const passageName = document.createElement('h2');  
+		passageName.textContent = el.getAttribute('name') || '-';  
+		el.insertBefore(passageName, el.firstChild);
+	}
+});
+</script>
 </body>
 </html>
